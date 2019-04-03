@@ -21,7 +21,7 @@ class App extends Component {
     // this.srpeadOperatorObjectCopy();
     // this.srpeadOperatorArray();
     // this.promise();
-    this.promiseAsynAwait();
+    // this.promiseAsynAwait();
   }
 
   defaultParams = (x = 2, y = 2) => {

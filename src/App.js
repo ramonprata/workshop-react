@@ -5,6 +5,7 @@ const arrayTest = [1, 2, 3, 4, 5];
 
 class App extends Component {
   constructor(props) {
+    
     super(props);
     // this.defaultParams();
     // this.templateLiterals();
@@ -65,36 +66,26 @@ class App extends Component {
   };
 
   arrayFilter = () => {
-    const filtered = [...arrayTest].filter(item => item > 2);
+    const filtered = arrayTest.filter(item => item > 2);
     console.log('filtered :', filtered);
   };
 
   arrayMap = () => {
-    const mapped = [...arrayTest].map(item => item * 2);
+    const mapped = arrayTest.map(item => item * 2);
     console.log('mapped :', mapped);
   };
 
   arrayFind = () => {
-    const element = [...arrayTest].find(item => item > 2);
-    console.log('element :', element);
-  };
-
-  arrayFind = () => {
-    const element = [...arrayTest].find(item => item > 2);
+    const element = arrayTest.find(item => item > 2);
     console.log('element :', element);
   };
 
   arrayIncludes = () => {
-    const elementExists = [...arrayTest].includes(2);
+    const elementExists = arrayTest.includes(2);
     console.log('elementExists :', elementExists);
   };
 
   objectLiterals = (a = 'a1', b = 'b1') => {
-    // const myObject = {
-    //   a: a,
-    //   b: b
-    // };
-
     const myObject = { a, b };
     console.log('myObject :', myObject);
   };
@@ -145,10 +136,10 @@ class App extends Component {
   };
 
   srpeadOperatorArray = () => {
-    console.log('array spreaded :', [...arrayTest]);
+    console.log('array arrayTest :', [...arrayTest]);
     const arr2 = [6, 7, 8];
     arrayTest.push(...arr2);
-    console.log('arrayTest :', arrayTest);
+    console.log(' spreaded  :', arrayTest);
   };
 
   promise = () => {
@@ -157,7 +148,7 @@ class App extends Component {
       setTimeout(() => {
         console.log('Doing the first thing async...');
         works = false;
-        if (works) {
+        if (!works) {
           resolve('Ok');
         } else {
           reject('Something went wrong');
@@ -209,4 +200,5 @@ class App extends Component {
 }
 
 var anotherOne = `I have global scope`;
+
 export default App;

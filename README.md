@@ -3,7 +3,7 @@
 * Instale o [NodeJs](https://nodejs.org/en/) caso não tenha
 * No terminal rode este comando para instalar o create react app
   * ```npm i create-react-app```
-* Clone o projeto no github [AQUI](https://github.com/ramonprata/workshop-react)
+* Clone o projeto
 * No terminal, dentro da pasta do projeto, rode este comando para instalar dependencias
     * ```npm install```
 * Para rodar a aplicação rode este comando na pasta local onde você baixou o projeto

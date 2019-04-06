@@ -1,4 +1,3 @@
-# workshop-react
 # WORKSHOP REACT
 ## Setup
 * Instale o [NodeJs](https://nodejs.org/en/) caso não tenha

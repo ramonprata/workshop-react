@@ -11,7 +11,7 @@
 ### Opcional - sugestões
 * Editor de código [VSCode](https://code.visualstudio.com/)
 * Snippets que ajudam no desenvolvimento
-    * [JavaScript (ES6) code snippets](https://github.com/dtidigitalcrafters/react-do-zero/blob/master/README.md)
+    * [JavaScript (ES6) code snippets](https://marketplace.visualstudio.com/itemdetails?itemName=xabikos.JavaScriptSnippets)
     * [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
     * [Reactjs code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets)
 

@@ -140,7 +140,7 @@
 - as **Props** recebidas por um componente são imutáveis
 - um componente "pai" pode passar também, via **props**, referencias de funções implementadas no pai para serem chamadas nos filhos
 
-## MODULO II
+## MODULO III
 
 ### Componentes - State
 

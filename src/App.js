@@ -8,40 +8,84 @@ import meuEstilo from './meuEstilo.module.css';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      comment: 'Blabla',
+      count: 0,
+      mostraWelcome: false,
+      outraProp: ''
+    };
+
+    console.log('Construtor App');
+    setTimeout(() => {
+      this.setState({
+        outraProp: 'Outra prop alterada'
+      })
+    }, 5000);
   }
 
-  mostraTexto = () => {
-    console.log('Meu texto');
+  minhaFuncao = () => {
+    console.log('Esse código depois que atualizar o state');
+  };
+  atualizaMeuState = () => {
+    // ERRAAAADOOOOOO
+    this.state.comment = 'Cometário alterado';
+    // this.setState({
+    //   comment: 'Cometário alterado',
+    //   count: (this.state.count += 1)
+    // });
+    setInterval(() => {
+      this.setState(prevState => {
+        return {
+          count: (prevState.count += 1)
+        };
+      });
+    }, 1000);
   };
 
+  mostraWelcome = () => {
+    this.setState({
+      mostraWelcome: true
+    });
+  };
+
+  // renderWelcome = () => {
+  //   return this.state.mostraWelcome ? <Welcome /> : null;
+  // };
+
+  renderWelcome = () => {
+    return (
+      <Welcome 
+      outraProp={this.state.outraProp}
+      devoMostrar={this.state.mostraWelcome} 
+      mostraComentario={this.mostraComentario} />
+    );
+  };
+
+  mostraComentario = () => {
+    this.setState({
+      mostraComentario: true
+    });
+  };
+
+  
+  componentWillMount() {
+    console.log('componentWillMount App');
+  }
+
+  componentDidMount() {
+    console.log('componentDidMount App');
+  }
+  
   render() {
+    console.log('render App');
     return (
       <div className="App">
         <header className={meuEstilo.Appheader}>
-          <div style={styles}>
-            <p>Div com estilo como objeto js</p>
-          </div>
-          <img src={logo} className="App-logo" alt="logo" style={{height: 150, width: 150}} />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          <Welcome
-            mostraTexto={this.mostraTexto}
-            person={{
-              name: 'Ramon',
-              age: 25
-            }}
-          >
-            <div>bla bla</div>
-          </Welcome>
+          {this.state.mostraComentario && <p>{this.state.comment}</p>}
+          <button onClick={this.mostraWelcome}>Mostra welcome</button>
+          {/* <button onClick={this.atualizaMeuState}>Start</button> */}
+          <h1>{this.state.count}</h1>
+          {this.renderWelcome()}
         </header>
       </div>
     );

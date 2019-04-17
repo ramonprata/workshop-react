@@ -241,3 +241,5 @@ https://www.lifewire.com/best-javascript-es6-features-4579821
 https://medium.freecodecamp.org/ecmascript-2016-es7-features-86903c5cab70
 
 https://medium.freecodecamp.org/es8-the-new-features-of-javascript-7506210a1a22
+
+https://reacttraining.com/react-router/web/guides/quick-start

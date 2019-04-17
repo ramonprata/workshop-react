@@ -37,7 +37,7 @@ class BookStoreAppBar extends Component {
                 onClick={() => this.props.history.replace('/')}
               >
                 <img src={logo} alt="logo" className={classes.img} />
-                <Typography>Books</Typography>
+                <Typography variant='h6'>Books</Typography>
               </Grid>
 
               <Grid

@@ -215,6 +215,19 @@
 ### Componentes - LifeCycle - React >= 16.3
 ![](images/lifecyclereact16.png)
 
+## MODULO IV
+
+### Navegação - React router
+- Route
+- Switch
+- Link
+- Navegação programática
+- Navegação com parâmetros
+
+### Navegação - Prática - Book Store
+![](images/bookStoreModulo4.png)
+
+
 # REFERENCIAS
 
 https://reactjs.org

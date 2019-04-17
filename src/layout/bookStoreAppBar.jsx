@@ -6,12 +6,17 @@ import { AppBar, Toolbar, Badge, Typography, Grid, IconButton } from '@material-
 import { ShoppingCart, Favorite, AccountCircle } from '@material-ui/icons';
 
 class BookStoreAppBar extends Component {
+  
+  /**
+   * Navega para o path e passa data como parametro
+   */
   goTo = path => {
     this.props.history.push({
       pathname: path,
       data: { idUsuario: 1, teste: 'bla' }
     });
   };
+
   render() {
     const { classes } = this.props;
     return (

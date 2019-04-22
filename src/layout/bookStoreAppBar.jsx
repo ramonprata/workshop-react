@@ -1,11 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect  } from 'react-redux';
+import { compose } from 'redux';
+import { setNome } from '../layout/layoutActions';
+import PropTypes from 'prop-types';
 import logo from '../logo.svg';
 import { withRouter, Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Badge, Typography, Grid, IconButton } from '@material-ui/core';
-import { ShoppingCart, Favorite, AccountCircle } from '@material-ui/icons';
+import { AppBar, Toolbar, Badge, Typography, Grid, IconButton } from '@material-ui/core/';
+import { ShoppingCart, Favorite, AccountCircle } from '@material-ui/icons/';
 
-class BookStoreAppBar extends Component {
+class BookStoreAppBar extends React.Component {
+
+  componentDidMount() {
+    console.log('this.props :', this.props);
+
+    setTimeout(() => {
+      this.props.setNome('Jenifer');
+      console.log('this.props.nome :', this.props.nome);
+    }, 5000);
+
+  }
   
   /**
    * Navega para o path e passa data como parametro
@@ -16,11 +30,11 @@ class BookStoreAppBar extends Component {
       data: { idUsuario: 1, teste: 'bla' }
     });
   };
-
+  
   render() {
     const { classes } = this.props;
     return (
-      <div classeName={classes.root}>
+      <div className={classes.root}>
         <AppBar position="fixed" color="default">
           <Toolbar>
             <Grid container direction="row" alignItems="center" justify="space-between">
@@ -51,21 +65,16 @@ class BookStoreAppBar extends Component {
                 lg={2}
                 justify="space-between"
               >
-                <IconButton color="inherit" onClick={() => this.goTo('shopping')}>
+                <IconButton color="inherit" onClick={() => this.goTo('shopping-cart')}>
                   <Badge badgeContent={4} color="secondary">
                     <ShoppingCart />
-                    {/* 
-                    <Link to="shopping">
-                      <ShoppingCart />
-                    </Link> */}
+                    {/* <Link to="/shopping-cart"><ShoppingCart /></Link> */}
                   </Badge>
                 </IconButton>
                 <IconButton color="inherit" onClick={() => this.goTo('wishlist')}>
                   <Badge badgeContent={4} color="secondary">
                     <Favorite />
-                    {/* <Link to="wishlists">
-                      <Favorite />
-                    </Link> */}
+                    {/* <Link to="/wishlist"><ShoppingCart /></Link> */}
                   </Badge>
                 </IconButton>
                 <IconButton color="inherit">
@@ -80,6 +89,10 @@ class BookStoreAppBar extends Component {
   }
 }
 
+BookStoreAppBar.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
 const styles = {
   root: {
     flexGrow: 1
@@ -92,4 +105,29 @@ const styles = {
     width: 50
   }
 };
-export default withRouter(withStyles(styles)(BookStoreAppBar));
+
+
+
+
+export const mapStateToProps = (state) => {
+  return {
+    nome: state.reducerNome.nome
+  };
+};
+
+
+const mapDispatchToProps = {
+  setNome
+};
+
+// export default connect(mapStateToProps)(BookStoreAppBar);
+
+export default compose(
+  withStyles(styles),
+  withRouter,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(BookStoreAppBar);
+

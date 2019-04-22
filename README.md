@@ -228,6 +228,25 @@
 ![](images/bookStoreModulo4.png)
 
 
+## MODULO V
+
+### Controle de estado da aplicação - React Redux
+- controle de estado global da aplicação
+- compartilhar estados entre componentes em qualquer nível
+- store 
+  - state
+    * guarda o estado da aplicação
+  - reducers
+    * funções que alteram o estado da aplicação
+  - actions
+    * ações que dizem como os reducers devem alterar o estado
+
+### Controle de estado da aplicação - React Redux
+![](images/redux1.png)
+
+### Controle de estado da aplicação - React Redux
+![](images/redux2.png)
+
 # REFERENCIAS
 
 https://reactjs.org
@@ -243,3 +262,5 @@ https://medium.freecodecamp.org/ecmascript-2016-es7-features-86903c5cab70
 https://medium.freecodecamp.org/es8-the-new-features-of-javascript-7506210a1a22
 
 https://reacttraining.com/react-router/web/guides/quick-start
+
+https://redux.js.org/

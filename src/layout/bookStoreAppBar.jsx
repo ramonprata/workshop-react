@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect  } from 'react-redux';
+import { compose } from 'redux';
+import { setNome } from '../layout/layoutActions';
 import PropTypes from 'prop-types';
 import logo from '../logo.svg';
 import { withRouter, Link } from 'react-router-dom';
@@ -7,6 +10,18 @@ import { AppBar, Toolbar, Badge, Typography, Grid, IconButton } from '@material-
 import { ShoppingCart, Favorite, AccountCircle } from '@material-ui/icons/';
 
 class BookStoreAppBar extends React.Component {
+
+  componentDidMount() {
+    console.log('this.props :', this.props);
+
+    setTimeout(() => {
+      this.props.setNome('Jenifer');
+      console.log('this.props.nome :', this.props.nome);
+    }, 5000);
+
+
+  }
+  
   goTo = path => {
     this.props.history.push(path);
   };
@@ -86,4 +101,28 @@ const styles = {
   }
 };
 
-export default withRouter(withStyles(styles)(BookStoreAppBar));
+
+
+
+export const mapStateToProps = (state) => {
+  return {
+    nome: state.reducerNome.nome
+  };
+};
+
+
+const mapDispatchToProps = {
+  setNome
+};
+
+// export default connect(mapStateToProps)(BookStoreAppBar);
+
+export default compose(
+  withStyles(styles),
+  withRouter,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(BookStoreAppBar);
+

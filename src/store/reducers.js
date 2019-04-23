@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { layoutActions } from '../layout';
-
+import bookStoreReducer from '../booksStore/bookStoreReducer';
 const INITIAL_STATE = {
   nome: ''
 };
@@ -16,7 +16,8 @@ const meuPrimeiroReducer = (state = INITIAL_STATE, action) => {
 };
 
 const reducer = combineReducers({
-  reducerNome: meuPrimeiroReducer
+  reducerNome: meuPrimeiroReducer,
+  bookStoreReducer
 });
 
 export default reducer;

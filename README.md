@@ -247,6 +247,14 @@
 ### Controle de estado da aplicação - React Redux
 ![](images/redux2.png)
 
+## MODULO VI - Boas práticas, otimização e reuso de coponentes
+- Quebrar componentes e componentes menores
+  * facilita manutenabilidade 
+  * mais controle nas renderizações (otimização)
+  * aumenta potencial de reuso de componentes
+- Transformar function componentes em class componentes
+  * performance
+
 # REFERENCIAS
 
 https://reactjs.org

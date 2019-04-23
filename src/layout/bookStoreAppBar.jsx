@@ -1,93 +1,74 @@
 import React from 'react';
-import { connect  } from 'react-redux';
+import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { setNome } from '../layout/layoutActions';
 import PropTypes from 'prop-types';
 import logo from '../logo.svg';
 import { withRouter, Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Badge, Typography, Grid, IconButton } from '@material-ui/core/';
-import { ShoppingCart, Favorite, AccountCircle } from '@material-ui/icons/';
+import { AppBar, Toolbar, Typography, Grid, IconButton } from '@material-ui/core/';
+import { AccountCircle } from '@material-ui/icons/';
 
-class BookStoreAppBar extends React.Component {
+import IconeCart from './iconeCart';
+import IconeFavorite from './iconeFavorite';
 
-  componentDidMount() {
-    console.log('this.props :', this.props);
-
-    setTimeout(() => {
-      this.props.setNome('Jenifer');
-      console.log('this.props.nome :', this.props.nome);
-    }, 5000);
-
-  }
-  
-  /**
-   * Navega para o path e passa data como parametro
-   */
-  goTo = path => {
-    this.props.history.push({
+const BookStoreAppBar = props => {
+  // /**
+  //  * Navega para o path e passa data como parametro
+  //  */
+  const goTo = path => {
+    props.history.push({
       pathname: path,
       data: { idUsuario: 1, teste: 'bla' }
     });
   };
-  
-  render() {
-    const { classes } = this.props;
-    return (
-      <div className={classes.root}>
-        <AppBar position="fixed" color="default">
-          <Toolbar>
-            <Grid container direction="row" alignItems="center" justify="space-between">
-              <Grid
-                container
-                item
-                direction="row"
-                alignItems="center"
-                xs={3}
-                md={3}
-                sm={6}
-                lg={3}
-                className={classes.logoContainer}
-                onClick={() => this.props.history.replace('/')}
-              >
-                <img src={logo} alt="logo" className={classes.img} />
-                <Typography variant='h6'>Books</Typography>
-              </Grid>
 
-              <Grid
-                container
-                item
-                direction="row"
-                alignItems="center"
-                xs={6}
-                sm={3}
-                md={3}
-                lg={2}
-                justify="space-between"
-              >
-                <IconButton color="inherit" onClick={() => this.goTo('shopping-cart')}>
-                  <Badge badgeContent={4} color="secondary">
-                    <ShoppingCart />
-                    {/* <Link to="/shopping-cart"><ShoppingCart /></Link> */}
-                  </Badge>
-                </IconButton>
-                <IconButton color="inherit" onClick={() => this.goTo('wishlist')}>
-                  <Badge badgeContent={4} color="secondary">
-                    <Favorite />
-                    {/* <Link to="/wishlist"><ShoppingCart /></Link> */}
-                  </Badge>
-                </IconButton>
-                <IconButton color="inherit">
-                  <AccountCircle />
-                </IconButton>
-              </Grid>
+  const { classes } = props;
+  return (
+    <div className={classes.root}>
+      <AppBar position="fixed" color="default">
+        <Toolbar>
+          <Grid container direction="row" alignItems="center" justify="space-between">
+            <Grid
+              container
+              item
+              direction="row"
+              alignItems="center"
+              xs={3}
+              md={3}
+              sm={6}
+              lg={3}
+              className={classes.logoContainer}
+              onClick={() => props.history.replace('/')}
+            >
+              <img src={logo} alt="logo" className={classes.img} />
+              <Typography variant="h6">Books</Typography>
             </Grid>
-          </Toolbar>
-        </AppBar>
-      </div>
-    );
-  }
-}
+
+            <Grid
+              container
+              item
+              direction="row"
+              alignItems="center"
+              xs={6}
+              sm={3}
+              md={3}
+              lg={2}
+              justify="space-between"
+            >
+              <IconeCart badgeContent={props.itensCarrinho.length} goTo={goTo} />
+              <IconeFavorite badgeContent={props.listaDesejos.length} goTo={goTo} />
+
+              <IconButton color="inherit">
+                <AccountCircle />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+};
 
 BookStoreAppBar.propTypes = {
   classes: PropTypes.object.isRequired
@@ -106,15 +87,13 @@ const styles = {
   }
 };
 
-
-
-
-export const mapStateToProps = (state) => {
+export const mapStateToProps = state => {
   return {
-    nome: state.reducerNome.nome
+    nome: state.reducerNome.nome,
+    listaDesejos: state.bookStoreReducer.listaDesejos,
+    itensCarrinho: state.bookStoreReducer.itensCarrinho
   };
 };
-
 
 const mapDispatchToProps = {
   setNome
@@ -130,4 +109,3 @@ export default compose(
     mapDispatchToProps
   )
 )(BookStoreAppBar);
-

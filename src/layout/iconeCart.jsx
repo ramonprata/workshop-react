@@ -14,7 +14,6 @@ class IconeCart extends Component {
       <IconButton color="inherit" onClick={() => this.props.goTo('shopping-cart')}>
         <Badge badgeContent={this.props.badgeContent} color="secondary">
           <ShoppingCart />
-          {/* <Link to="/shopping-cart"><ShoppingCart /></Link> */}
         </Badge>
       </IconButton>
     );

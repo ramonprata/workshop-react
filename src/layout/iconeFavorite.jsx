@@ -13,7 +13,6 @@ class IconeFavorite extends Component {
       <IconButton color="inherit" onClick={() => this.props.goTo('wishlist')}>
         <Badge badgeContent={this.props.badgeContent} color="secondary">
           <Favorite />
-          {/* <Link to="/wishlist"><ShoppingCart /></Link> */}
         </Badge>
       </IconButton>
     );

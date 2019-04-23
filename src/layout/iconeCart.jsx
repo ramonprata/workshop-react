@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { Badge, IconButton } from '@material-ui/core/';
 import { ShoppingCart } from '@material-ui/icons/';
 

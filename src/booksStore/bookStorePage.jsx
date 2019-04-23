@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
-import { booksMock } from '../booksMock';
+import { Grid, CircularProgress } from '@material-ui/core';
 import BookCard from './bookCard';
+import { getBooks } from './bookStoreService';
 class BookStorePage extends Component {
+
+  state = {
+    books: null
+  }
+  async componentDidMount() {
+    try {
+      const respostaAPI = await getBooks();
+      this.setState({
+        books: respostaAPI.data
+      })
+    } catch (error) {
+      alert('Ocorreu um erro na chamada da API')
+    }
+  }
+  
   render() {
     const { classes } = this.props;
     return (
@@ -11,11 +26,12 @@ class BookStorePage extends Component {
         <Grid item xs={12} className={classes.booksContainer}>
           <Grid container justify="center" spacing={24}>
             {
-              booksMock.items.map(book => (
+              this.state.books ? 
+              this.state.books.map(book => (
               <Grid key={book.volumeInfo.title} item>
                 <BookCard book={book} />
               </Grid>
-            ))}
+            )) : <CircularProgress size={40}/>}
           </Grid>
         </Grid>
       </Grid>
@@ -26,7 +42,7 @@ class BookStorePage extends Component {
 const styles = {
   root: {
     flexGrow: 1,
-    padding: '0 10%'
+    padding: '0 10%',
   },
   booksContainer: {
     paddingTop: '5%'

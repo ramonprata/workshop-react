@@ -11,6 +11,7 @@ import { AccountCircle } from '@material-ui/icons/';
 
 import IconeCart from './iconeCart';
 import IconeFavorite from './iconeFavorite';
+import IconeAccount from './iconeAccount';
 
 const BookStoreAppBar = props => {
   // /**
@@ -59,9 +60,7 @@ const BookStoreAppBar = props => {
               <IconeCart badgeContent={props.itensCarrinho.length} goTo={goTo} />
               <IconeFavorite badgeContent={props.listaDesejos.length} goTo={goTo} />
 
-              <IconButton color="inherit">
-                <AccountCircle />
-              </IconButton>
+             <IconeAccount />
             </Grid>
           </Grid>
         </Toolbar>

@@ -2,22 +2,18 @@ import React, { Component, useEffect } from 'react';
 import { Badge, IconButton } from '@material-ui/core/';
 import { ShoppingCart } from '@material-ui/icons/';
 
-class IconeCart extends Component {
+const IconeCart = props => {
+  useEffect(() => {
+    console.log('useEffect IconeCart');
+  }, [props.badgeContent]);
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props.badgeContent !== nextProps.badgeContent
-  }
-  
-  render() {
-    console.log('render IconeCart ');
-    return (
-      <IconButton color="inherit" onClick={() => this.props.goTo('shopping-cart')}>
-        <Badge badgeContent={this.props.badgeContent} color="secondary">
-          <ShoppingCart />
-        </Badge>
-      </IconButton>
-    );
-  }
-}
+  return (
+    <IconButton color="inherit" onClick={() => props.goTo('shopping-cart')}>
+      <Badge badgeContent={props.badgeContent} color="secondary">
+        <ShoppingCart />
+      </Badge>
+    </IconButton>
+  );
+};
 
 export default IconeCart;

@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import { IconButton, Menu, MenuItem } from '@material-ui/core/';
 import { AccountCircle } from '@material-ui/icons/';
 
-const IconeAccount = () => {
+const IconeAccount = (props) => {
   // state = {
   //   anchorEl: null
   // };

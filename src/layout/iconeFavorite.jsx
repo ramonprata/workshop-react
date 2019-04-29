@@ -8,7 +8,7 @@ class IconeFavorite extends Component {
   }
 
   render() {
-    console.log('render IconeFavorite ');
+    // console.log('render IconeFavorite ');
     return (
       <IconButton color="inherit" onClick={() => this.props.goTo('wishlist')}>
         <Badge badgeContent={this.props.badgeContent} color="secondary">

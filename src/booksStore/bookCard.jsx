@@ -9,20 +9,18 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import { ShoppingCart } from '@material-ui/icons/';
 import { Grid, Typography, IconButton, CardMedia } from '@material-ui/core';
 
-import { incluiNalistaDesejos, incluiNoCarrinho  } from './bookStoreActions';
+import { incluiNalistaDesejos, incluiNoCarrinho } from './bookStoreActions';
 
-class BookCard extends React.Component {
-
+export class BookCard extends React.Component {
   incluiNoCarrinho = () => {
-   this.props.incluiNoCarrinho(this.props.book);
-  }
+    this.props.incluiNoCarrinho(this.props.book);
+  };
 
   incluiNalistaDesejos = () => {
     this.props.incluiNalistaDesejos(this.props.book);
-  } 
+  };
 
   render() {
-
     const { classes, book } = this.props;
     return (
       <Card className={classes.card}>
@@ -34,18 +32,22 @@ class BookCard extends React.Component {
             title="Live from space album cover"
           />
           <CardContent className={classes.cardContent}>
-            <Typography component="p" variant="subtitle1">
+            <Typography component="p" variant="subtitle1" id={`tituloLivro${book.id}`}>
               {book.volumeInfo.title}
             </Typography>
-            <Typography variant="subtitle2" color="textSecondary">
+            <Typography variant="subtitle2" color="textSecondary"  id={`autorLivro${book.id}`}>
               {book.volumeInfo.authors ? book.volumeInfo.authors[0] : ''}
             </Typography>
           </CardContent>
           <div>
-            <IconButton aria-label="Add to favorites" onClick={this.incluiNalistaDesejos}>
+            <IconButton
+              aria-label="Add to favorites"
+              id={`btnFavorite${book.id}`}
+              onClick={this.incluiNalistaDesejos}
+            >
               <FavoriteIcon />
             </IconButton>
-            <IconButton aria-label="Share" onClick={this.incluiNoCarrinho}>
+            <IconButton aria-label="Share" id={`btnShopping${book.id}`} onClick={this.incluiNoCarrinho}>
               <ShoppingCart />
             </IconButton>
           </div>
@@ -75,11 +77,13 @@ const styles = theme => ({
 });
 
 const mapDispatchToProps = {
-  incluiNalistaDesejos, incluiNoCarrinho
+  incluiNalistaDesejos,
+  incluiNoCarrinho
 };
 
 export default compose(
-  withStyles(styles),  connect(
+  withStyles(styles),
+  connect(
     null,
     mapDispatchToProps
   )

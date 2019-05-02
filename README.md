@@ -255,6 +255,37 @@
 - Transformar function componentes em class componentes
   * performance
 
+## MODULO VII - Features React 16.x.x / Testes
+- React memo
+    * melhora performance
+    * faz o cache de uma renderização que já ocorreu
+    * se as props não mudam renderiza o que está em cache sem precisar
+      processar a renderização novamente
+    * [Entenda a técnica de memoization](http://cangaceirojavascript.com.br/funcoes-velozes-com-memoization-pattern/)
+    
+- React React hooks
+    * uma forma de mehorar a performance da aplicação fazendo **function components** se comportarem como **class components**
+    * principais hooks
+        * **useState:** fazer controle de estado em um **function component**
+        * **useEffect:** simular lifecycle em um **function component**
+    * outros hooks
+        * useReducer
+        * useRef
+        * useCallback
+        * useMemo
+- Testes unitários
+    * [Jest](https://jestjs.io/)
+        * default em aplicações react
+        * test runner
+        * é o jest que irá rodar seus testes, fazer os asserts(validações)
+    * [Enzyme](https://airbnb.io/enzyme/)
+        * é um *utility* para testar componentes em react
+        * provê recursos para montar e manipular os componentes
+        * ver alguns exemplos de teste no projeto em: ```src/bookStore/tests```
+        * para rodar os testes execute: ```npm run test```
+        * as configurações do jest ficam no ```package.json```
+
+
 # REFERENCIAS
 
 https://reactjs.org
@@ -272,3 +303,11 @@ https://medium.freecodecamp.org/es8-the-new-features-of-javascript-7506210a1a22
 https://reacttraining.com/react-router/web/guides/quick-start
 
 https://redux.js.org/
+
+https://reactjs.org/docs/hooks-intro.html
+
+https://reactjs.org/docs/react-api.html#reactmemo
+
+https://jestjs.io/
+
+https://airbnb.io/enzyme/

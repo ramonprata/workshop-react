@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
-import * as shoppingCartActions from './shoppingCartActions';
-import * as shoppingCartOperations from './shoppingCartOperations';
+import * as shoppingCartOperations from './redux/shoppingCartOperations';
 class ShoppingCartPage extends Component {
   render() {
     return (

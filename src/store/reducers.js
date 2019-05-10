@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { layoutActions } from '../layout';
 import bookStoreReducer from '../booksStore/bookStoreReducer';
-import shoppingCartReducer from '../shoppingCart/shoppingCartReducer';
+import shoppingCartReducer from '../shoppingCart/redux/shoppingCartReducer';
 
 const reducer = combineReducers({
   bookStoreReducer,

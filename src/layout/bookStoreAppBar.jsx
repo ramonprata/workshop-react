@@ -88,23 +88,16 @@ const styles = {
 
 export const mapStateToProps = state => {
   return {
-    nome: state.reducerNome.nome,
     listaDesejos: state.bookStoreReducer.listaDesejos,
     itensCarrinho: state.bookStoreReducer.itensCarrinho
   };
 };
-
-const mapDispatchToProps = {
-  setNome
-};
-
-// export default connect(mapStateToProps)(BookStoreAppBar);
 
 export default compose(
   withStyles(styles),
   withRouter,
   connect(
     mapStateToProps,
-    mapDispatchToProps
+    null
   )
 )(BookStoreAppBar);

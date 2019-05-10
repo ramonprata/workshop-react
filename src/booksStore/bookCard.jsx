@@ -9,7 +9,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import { ShoppingCart } from '@material-ui/icons/';
 import { Grid, Typography, IconButton, CardMedia } from '@material-ui/core';
 
-import { incluiNalistaDesejos, incluiNoCarrinho } from './bookStoreActions';
+import * as bookStoreActions  from './bookStoreActions';
 
 export class BookCard extends React.Component {
   incluiNoCarrinho = () => {
@@ -48,7 +48,8 @@ export class BookCard extends React.Component {
             >
               <FavoriteIcon />
             </IconButton>
-            <IconButton aria-label="Share" id={`btnShopping${book.id}`} onClick={this.incluiNoCarrinho}>
+            <IconButton aria-label="Share" id={`btnShopping${book.id}`} 
+            onClick={this.incluiNoCarrinho}>
               <ShoppingCart />
             </IconButton>
           </div>
@@ -78,8 +79,8 @@ const styles = theme => ({
 });
 
 const mapDispatchToProps = {
-  incluiNalistaDesejos,
-  incluiNoCarrinho
+  incluiNalistaDesejos: bookStoreActions.incluiNalistaDesejos,
+  incluiNoCarrinho: bookStoreActions.incluiNoCarrinho
 };
 
 export default compose(

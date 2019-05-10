@@ -1,17 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button } from '@material-ui/core';
+import * as shoppingCartActions from './shoppingCartActions';
+import * as shoppingCartOperations from './shoppingCartOperations';
 class ShoppingCartPage extends Component {
   render() {
     return (
       <div>
         <h1>ShoppingCartPage</h1>
-        <p>{`O nome dela é.. ${this.props.nome}`}</p>
+        <Button variant="contained" color="primary" onClick={() => this.props.efetuarCompra(true)}>
+          Comprar
+        </Button>
+        <div>{`Compra efetuada: ${this.props.compraEfetuada}`}</div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return { nome: state.reducerNome.nome };
+const mapStateToProps = ({shoppingCart}) => {
+  return {
+    compraEfetuada: shoppingCart.compraEfetuada
+  };
 };
-export default connect(mapStateToProps)(ShoppingCartPage);
+
+const mapDispatchToProps = {
+  efetuarCompra: shoppingCartOperations.efetuarCompra
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ShoppingCartPage);

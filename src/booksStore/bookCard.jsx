@@ -26,6 +26,7 @@ export class BookCard extends React.Component {
       <Card className={classes.card}>
         <Grid container direction="column" justify="flex-end">
           <CardMedia
+            id={`imgBook${book.id}`}
             onClick={() => alert(book.volumeInfo.title)}
             className={classes.cover}
             image={book.volumeInfo.imageLinks.smallThumbnail}

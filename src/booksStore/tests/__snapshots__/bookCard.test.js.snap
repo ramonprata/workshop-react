@@ -8,6 +8,7 @@ exports[`Testa <BookCard /> Deve renderizar <BookCard />  1`] = `
     justify="flex-end"
   >
     <WithStyles(CardMedia)
+      id="imgBookH9lBCwAAQBAJ"
       image="http://books.google.com/books/content?id=H9lBCwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
       onClick={[Function]}
       title="Live from space album cover"

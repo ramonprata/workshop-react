@@ -26,23 +26,42 @@ describe('Testa <BookCard />', function() {
     expect(toJson(component)).toMatchSnapshot();
   });
 
-  it(`Deve renderizar o botão btnFavorite${bookMock.id}`, () => {
+  it(`Deve renderizar a imagem do book: imgBook${bookMock.id}`, () => {
+    const imagemBook = component.find(`#imgBook${bookMock.id}`);
+    expect(imagemBook.exists()).toEqual(true);
+    expect(imagemBook.props().image).toEqual(bookMock.volumeInfo.imageLinks.smallThumbnail);
+    // expect(imagemBook.props().image).toEqual('bla');
+  });
+
+  it(`Ao clicar na imagem do <BookCard /> deve chamar o window.alert() com a mensagem ${
+    bookMock.volumeInfo.title
+  }`, () => {
+    global.alert = jest.fn();
+    const imagemBook = component.find(`#imgBook${bookMock.id}`);
+    imagemBook.simulate('click');
+    expect(global.alert).toHaveBeenCalled();
+    expect(global.alert).toBeCalledWith(bookMock.volumeInfo.title);
+  });
+
+  it(`Deve renderizar o botão de incluir em na lista e desejos: btnFavorite${bookMock.id}`, () => {
     expect(component.find(`#btnFavorite${bookMock.id}`).exists()).toEqual(true);
   });
 
-  it(`Ao clicar no btnFavorite${
+  it(`Ao clicar no de icone de  incluir em na lista e desejos: btnFavorite${
     bookMock.id
-  } a função incluiNalistaDesejos() deve ser executada `, () => {
+  } a função props.incluiNalistaDesejos() deve ser executada `, () => {
     const botao = component.find(`#btnFavorite${bookMock.id}`);
     botao.simulate('click');
     expect(incluiNalistaDesejosMock).toHaveBeenCalled();
   });
 
-  it(`Deve renderizar o botão btnShopping${bookMock.id}`, () => {
+  it(`Deve renderizar o botão de incluir no carrinho de compras: btnShopping${bookMock.id}`, () => {
     expect(component.find(`#btnShopping${bookMock.id}`).exists()).toEqual(true);
   });
 
-  it(`Ao clicar no btnShopping a função incluiNoCarrinho() deve ser executada `, () => {
+  it(`Ao clicar no botão  de incluir no carrinho de compras: btnShopping${
+    bookMock.id
+  } a função props.incluiNoCarrinho() deve ser executada `, () => {
     const botao = component.find(`#btnShopping${bookMock.id}`);
     botao.simulate('click');
     expect(incluiNoCarrinhoMock).toHaveBeenCalled();

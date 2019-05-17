@@ -42,8 +42,8 @@ const BookStoreAppBar = props => {
               className={classes.logoContainer}
               onClick={() => props.history.replace('/')}
             >
-              <img src={logo} alt="logo" className={classes.img} />
-              <Typography variant="h6">Books</Typography>
+              {/* <img src={logo} alt="logo" className={classes.img} /> */}
+              <Typography variant="h6">Precificação</Typography>
             </Grid>
 
             <Grid
@@ -57,10 +57,9 @@ const BookStoreAppBar = props => {
               lg={2}
               justify="space-between"
             >
-              <IconeCart badgeContent={props.itensCarrinho.length} goTo={goTo} />
+              {/* <IconeCart badgeContent={props.itensCarrinho.length} goTo={goTo} />
               <IconeFavorite badgeContent={props.listaDesejos.length} goTo={goTo} />
-
-             <IconeAccount />
+              <IconeAccount /> */}
             </Grid>
           </Grid>
         </Toolbar>

@@ -8,6 +8,7 @@ import { BookStoreAppBar } from './layout';
 import { WishListPage } from './wishList';
 import { ShoppingCartPage } from './shoppingCart';
 import { BookStorePage } from './booksStore';
+import { PrecificacaoPage } from './precificacao';
 
 class App extends Component {
   constructor(props) {
@@ -23,10 +24,10 @@ class App extends Component {
             </header>
             <div className="content">
               <Switch>
-                <Route exact path="/" component={BookStorePage} />
-                <Route exact path="/shopping-cart" component={ShoppingCartPage} />
+                <Route exact path="/" component={PrecificacaoPage} />
+                {/* <Route exact path="/shopping-cart" component={ShoppingCartPage} />
                 <Route exact path="/wishlist" component={WishListPage} />
-                <Route path="/(\w+)" component={BookStorePage} />
+                <Route path="/(\w+)" component={BookStorePage} /> */}
               </Switch>
             </div>
           </div>

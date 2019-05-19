@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Typography, Grid, Tabs, Tab, Paper } from '@material-ui/core/';
+import {
+  Typography,
+  Grid,
+  Tabs,
+  Tab,
+  Paper,
+} from '@material-ui/core/';
 import SwipeableViews from 'react-swipeable-views';
+import FormPreco from './formPreco'
+
 
 function TabContainer(props) {
   const { children, dir } = props;
@@ -50,7 +58,9 @@ class PrecificacaoPage extends Component {
             </Tabs>
           </Paper>
           <SwipeableViews axis="x" index={this.state.value} onChangeIndex={this.handleChangeIndex}>
-            <TabContainer dir="x">Tab Preços</TabContainer>
+            <TabContainer dir="x">
+              <FormPreco />
+            </TabContainer>
             <TabContainer dir="x">Tab Dois</TabContainer>
           </SwipeableViews>
         </Grid>

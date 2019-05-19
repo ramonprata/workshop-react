@@ -43,7 +43,7 @@ const BookStoreAppBar = props => {
               onClick={() => props.history.replace('/')}
             >
               {/* <img src={logo} alt="logo" className={classes.img} /> */}
-              <Typography variant="h6">Precificação</Typography>
+              <Typography variant="h6">Fechamento consumo</Typography>
             </Grid>
 
             <Grid

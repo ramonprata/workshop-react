@@ -1,17 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { setNome } from '../layout/layoutActions';
 import PropTypes from 'prop-types';
-import logo from '../logo.svg';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Grid, IconButton } from '@material-ui/core/';
-import { AccountCircle } from '@material-ui/icons/';
-
-import IconeCart from './iconeCart';
-import IconeFavorite from './iconeFavorite';
-import IconeAccount from './iconeAccount';
+import { AppBar, Toolbar, Typography, Grid } from '@material-ui/core/';
 
 const BookStoreAppBar = props => {
   // /**
@@ -56,11 +49,7 @@ const BookStoreAppBar = props => {
               md={3}
               lg={2}
               justify="space-between"
-            >
-              {/* <IconeCart badgeContent={props.itensCarrinho.length} goTo={goTo} />
-              <IconeFavorite badgeContent={props.listaDesejos.length} goTo={goTo} />
-              <IconeAccount /> */}
-            </Grid>
+            />
           </Grid>
         </Toolbar>
       </AppBar>
@@ -86,10 +75,7 @@ const styles = {
 };
 
 export const mapStateToProps = state => {
-  return {
-    listaDesejos: state.bookStoreReducer.listaDesejos,
-    itensCarrinho: state.bookStoreReducer.itensCarrinho
-  };
+  return {};
 };
 
 export default compose(

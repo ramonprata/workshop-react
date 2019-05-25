@@ -5,11 +5,7 @@ import store from './store';
 
 import './App.css';
 import { BookStoreAppBar } from './layout';
-import { WishListPage } from './wishList';
-import { ShoppingCartPage } from './shoppingCart';
-import { BookStorePage } from './booksStore';
 import { PrecificacaoPage } from './precificacao';
-import CardFechamentoConsumo from './fechamentoConsumo/cardFechamentoConsumo';
 
 class App extends Component {
   constructor(props) {
@@ -25,10 +21,7 @@ class App extends Component {
             </header>
             <div className="content">
               <Switch>
-                <Route exact path="/" component={CardFechamentoConsumo} />
-                {/* <Route exact path="/shopping-cart" component={ShoppingCartPage} />
-                <Route exact path="/wishlist" component={WishListPage} />
-                <Route path="/(\w+)" component={BookStorePage} /> */}
+                <Route exact path="/" component={PrecificacaoPage} />
               </Switch>
             </div>
           </div>

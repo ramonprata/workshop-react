@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import {
-  Typography,
-  Grid,
-  Tabs,
-  Tab,
-  Paper,
-} from '@material-ui/core/';
+import { Typography, Grid, Tabs, Tab, Paper } from '@material-ui/core/';
 import SwipeableViews from 'react-swipeable-views';
-import FormPreco from './formPreco'
-
+import FormPreco from './formPreco';
 
 function TabContainer(props) {
   const { children, dir } = props;
   return (
-    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+    <Grid
+      container
+      item
+      direction="column"
+      style={{
+        flexGrow: 1,
+        padding: '20px 1px',
+        height: '100vh',
+        overflowY: 'hidden'
+      }}
+    >
       {children}
-    </Typography>
+    </Grid>
   );
 }
 

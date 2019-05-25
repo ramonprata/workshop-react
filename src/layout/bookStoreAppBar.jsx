@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { setNome } from '../layout/layoutActions';
 import PropTypes from 'prop-types';
-import logo from '../logo.svg';
 import { withRouter, Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Grid, IconButton } from '@material-ui/core/';
@@ -86,10 +84,7 @@ const styles = {
 };
 
 export const mapStateToProps = state => {
-  return {
-    listaDesejos: state.bookStoreReducer.listaDesejos,
-    itensCarrinho: state.bookStoreReducer.itensCarrinho
-  };
+  return {};
 };
 
 export default compose(

@@ -11,8 +11,8 @@ import LabelValorReal from './labelValorReal';
 
 const propsMock = {
   valorTotal: 300,
-  valorReal: 175,
-  faixaAceite: 30
+  valorReal: 150,
+  faixaAceite: 10
 };
 class CardFechamentoConsumo extends Component {
   state = {
@@ -57,7 +57,9 @@ class CardFechamentoConsumo extends Component {
           <Grid container className={classes.rangeContainer}>
             <Grid container item direction="row" justify="center">
               <div className={classes.marcadorReferencia}>
-                <Icon color="primary">check_circle</Icon>
+                <div className={classes.iconeCheck}>
+                  <Icon color="primary">check</Icon>
+                </div>
                 <div className={classes.linhaMarcadorReferencia} />
               </div>
             </Grid>
@@ -104,12 +106,22 @@ const styles = theme => {
     linhaMarcadorReferencia: {
       width: 2,
       height: 50,
-      backgroundColor: theme.palette.common.black,
+      backgroundColor: '#ccc',
       marginBottom: -10,
       zIndex: 0
     },
     range: {
-      height: 8
+      height: 7
+    },
+    iconeCheck: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#ccc',
+      borderRadius: '50%',
+      height: 30,
+      width: 30
     }
   };
 };

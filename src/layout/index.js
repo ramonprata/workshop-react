@@ -1,3 +1,3 @@
 import * as layoutActions from './layoutActions';
-export { default as BookStoreAppBar } from './bookStoreAppBar';
+export { default as AppBar } from './appBar';
 export { layoutActions };

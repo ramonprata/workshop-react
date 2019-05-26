@@ -4,9 +4,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 import './App.css';
-import { BookStoreAppBar } from './layout';
-import CardFechamentoConsumo from './fechamentoConsumo/cardFechamentoConsumo';
-
+import { AppBar } from './layout';
+import { DemoContainer } from './hooksDemo';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -17,11 +16,11 @@ class App extends Component {
         <BrowserRouter>
           <div className="App">
             <header>
-              <BookStoreAppBar />
+              <AppBar />
             </header>
             <div className="content">
               <Switch>
-                <Route exact path="/" component={CardFechamentoConsumo} />
+                <Route exact path="/" component={DemoContainer} />
               </Switch>
             </div>
           </div>

@@ -7,9 +7,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Grid } from '@material-ui/core/';
 
 const BookStoreAppBar = props => {
-  // /**
-  //  * Navega para o path e passa data como parametro
-  //  */
   const goTo = path => {
     props.history.push({
       pathname: path,
@@ -28,14 +25,13 @@ const BookStoreAppBar = props => {
               item
               direction="row"
               alignItems="center"
-              xs={3}
-              md={3}
+              xs={6}
+              md={6}
               sm={6}
-              lg={3}
+              lg={6}
               className={classes.logoContainer}
               onClick={() => props.history.replace('/')}
             >
-              {/* <img src={logo} alt="logo" className={classes.img} /> */}
               <Typography variant="h6">React hooks</Typography>
             </Grid>
 
@@ -45,9 +41,9 @@ const BookStoreAppBar = props => {
               direction="row"
               alignItems="center"
               xs={6}
-              sm={3}
-              md={3}
-              lg={2}
+              sm={6}
+              md={6}
+              lg={6}
               justify="space-between"
             />
           </Grid>

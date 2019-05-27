@@ -6,15 +6,10 @@ import FormWithNoHooks from './formWithNoHooks';
 class DemoContainer extends Component {
   render() {
     return (
-      <Grid
-        container
-        direction="column"
-        justify="center"
-        style={{ flexGrow: 1, background: 'red', padding: '10vw' }}
-      >
+      <Grid container direction="column" justify="center" style={{ flexGrow: 1, padding: '10vw' }}>
         <Grid container item direction="row" justify="space-around">
-          <FormWithHooks />
           <FormWithNoHooks />
+          <FormWithHooks />
         </Grid>
       </Grid>
     );

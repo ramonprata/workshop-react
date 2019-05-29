@@ -4,6 +4,7 @@ import Input from './input';
 import './demo.css';
 import BotaoSalvar from './botaoSalvar';
 import DemoService from './service';
+import WidthWindow from './widthWindow';
 
 class FormWithNoHooks extends Component {
   constructor(props) {
@@ -11,22 +12,28 @@ class FormWithNoHooks extends Component {
     this.state = {
       nome: '',
       sobreNome: '',
-      loading: false
+      width: window.innerWidth
     };
   }
 
-  async componentDidMount() {
-    const { nome, sobreNome } = await DemoService.getUsuario();
-    this.setTitleDocument(nome);
-    this.setState({
-      nome,
-      sobreNome
-    });
+  componentDidMount() {
+    window.addEventListener('resize', this.handleWidthResize);
+    this.setTitleDocument(this.state.nome);
   }
 
   componentDidUpdate() {
-    // this.setTitleDocument(this.state.nome);
+    this.setTitleDocument(this.state.nome);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWidthResize);
+  }
+
+  handleWidthResize = () => {
+    this.setState({
+      width: window.innerWidth
+    });
+  };
 
   setTitleDocument = nome => {
     if (document.title !== nome) {
@@ -54,23 +61,15 @@ class FormWithNoHooks extends Component {
     });
   };
 
-  onSave = async () => {
-    this.setState({
-      loading: true
-    });
-    await DemoService.salvar(this.state);
-    this.resetState();
-  };
-
   render() {
     const { nome, sobreNome, loading } = this.state;
     return (
       <Card className="card">
-        <CardHeader title="Form with no hooks" />
+        <CardHeader title="Form sem hooks" />
         <CardContent>
           <Input label="Nome" value={nome} onChange={this.handleNomeChange} />
           <Input label="Sobrenome" value={sobreNome} onChange={this.handleSobrenomeChange} />
-          <BotaoSalvar onSave={this.onSave} loading={loading} />
+          <WidthWindow width={this.state.width} />
         </CardContent>
       </Card>
     );

@@ -1,19 +1,56 @@
-import React, { Component } from 'react';
-import { Grid } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Grid, RadioGroup, Radio, FormControlLabel } from '@material-ui/core';
 import FormWithHooks from './formWithHooks';
 import FormWithNoHooks from './formWithNoHooks';
 
-class DemoContainer extends Component {
-  render() {
-    return (
-      <Grid container direction="column" justify="center" style={{ flexGrow: 1, padding: '10vw' }}>
-        <Grid container item direction="row" justify="space-around">
-          <FormWithNoHooks />
-          <FormWithHooks />
-        </Grid>
-      </Grid>
-    );
+const DemoContainer = () => {
+  const [formSelecionado, setFormSelecionado] = useState('ambos');
+
+  function handleFormChange(e) {
+    setFormSelecionado(e.target.value);
   }
-}
+
+  return (
+    <Grid container direction="column" justify="space-between" style={{ padding: '10vw' }}>
+      <Grid container direction="column" alignItems="center">
+        <RadioGroup
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+            minWidth: 500
+          }}
+          aria-label="Forms"
+          name="radioforms"
+          value={formSelecionado}
+          onChange={handleFormChange}
+        >
+          <FormControlLabel
+            value="hooks"
+            control={<Radio />}
+            label="Com Hooks"
+            className="radioInline"
+          />
+          <FormControlLabel
+            value="noHooks"
+            control={<Radio />}
+            label="Sem hooks"
+            className="radioInline"
+          />
+          <FormControlLabel
+            value="ambos"
+            control={<Radio />}
+            label="Ambos"
+            className="radioInline"
+          />
+        </RadioGroup>
+      </Grid>
+      <Grid container item direction="row" justify="space-evenly">
+        {(formSelecionado === 'noHooks' || formSelecionado === 'ambos') && <FormWithNoHooks />}
+        {(formSelecionado === 'hooks' || formSelecionado === 'ambos') && <FormWithHooks />}
+      </Grid>
+    </Grid>
+  );
+};
 
 export default DemoContainer;

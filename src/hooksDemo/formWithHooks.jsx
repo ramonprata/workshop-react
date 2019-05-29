@@ -4,43 +4,43 @@ import './demo.css';
 import Input from './input';
 import BotaoSalvar from './botaoSalvar';
 import DemoService from './service';
+import WidthWindow from './widthWindow';
+import { useDocumentTitle } from './customHooks/useDocumentTitle';
+import { useWidthResize } from './customHooks/useWidthResize';
+import { useInputForm } from './customHooks/useInputForm';
 
 const FormWithHooks = () => {
   const [nome, setNome] = useState('');
   const [sobreNome, setSobreNome] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
 
-  useEffect(async () => {
-    if (nome.length === 0) {
-      const { nome, sobreNome } = await DemoService.getUsuario();
-      setNome(nome);
-      setSobreNome(sobreNome);
-    }
-    document.title = `${nome}`;
+  useEffect(() => {
+    document.title = nome;
   }, [nome]);
 
-  async function onSave() {
-    setLoading(true);
-    await DemoService.salvar({
-      nome,
-      sobreNome
-    });
-    resetState();
+  useEffect(() => {
+    const handleWidthResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleWidthResize);
+    return () => {
+      window.removeEventListener('resize', handleWidthResize);
+    };
+  });
+
+  function handleNomeChange(e) {
+    setNome(e.target.value);
   }
 
-  function resetState() {
-    setLoading(false);
-    setNome('');
-    setSobreNome('');
+  function handleSobreNomeChange(e) {
+    setSobreNome(e.target.value);
   }
 
   return (
     <Card className="card">
-      <CardHeader title="Form with hooks" />
+      <CardHeader title="Form com hooks" />
       <CardContent>
-        <Input label="Nome" value={nome} onChange={e => setNome(e.target.value)} />
-        <Input label="Sobrenome" value={sobreNome} onChange={e => setSobreNome(e.target.value)} />
-        <BotaoSalvar onSave={onSave} loading={loading} />
+        <Input label="Nome" value={nome} onChange={handleNomeChange} />
+        <Input label="Sobrenome" value={sobreNome} onChange={handleSobreNomeChange} />
+        <WidthWindow width={width} />
       </CardContent>
     </Card>
   );

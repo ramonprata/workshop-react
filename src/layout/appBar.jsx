@@ -1,19 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Grid } from '@material-ui/core/';
 
 const BookStoreAppBar = props => {
-  const goTo = path => {
-    props.history.push({
-      pathname: path,
-      data: { idUsuario: 1, teste: 'bla' }
-    });
-  };
-
   const { classes } = props;
   return (
     <div className={classes.root}>
@@ -70,15 +60,4 @@ const styles = {
   }
 };
 
-export const mapStateToProps = state => {
-  return {};
-};
-
-export default compose(
-  withStyles(styles),
-  withRouter,
-  connect(
-    mapStateToProps,
-    null
-  )
-)(BookStoreAppBar);
+export default withStyles(styles)(BookStoreAppBar);

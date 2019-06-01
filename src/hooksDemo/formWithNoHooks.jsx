@@ -2,43 +2,36 @@ import React, { Component } from 'react';
 import { Card, CardHeader, CardContent } from '@material-ui/core';
 import Input from './input';
 import './demo.css';
-import BotaoSalvar from './botaoSalvar';
-import DemoService from './service';
 import WidthWindow from './widthWindow';
 
 class FormWithNoHooks extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      nome: '',
-      sobreNome: '',
-      width: window.innerWidth
-    };
-  }
+  state = {
+    nome: 'Ramon',
+    sobreNome: '',
+    width: window.innerWidth
+  };
+
+  setDocumentTitle = () => {
+    document.title = this.state.nome;
+  };
 
   componentDidMount() {
-    window.addEventListener('resize', this.handleWidthResize);
-    this.setTitleDocument(this.state.nome);
+    this.setDocumentTitle();
+    window.addEventListener('resize', this.handleReziseWidth);
   }
 
-  componentDidUpdate() {
-    this.setTitleDocument(this.state.nome);
+  componentDidUpdate(prevProps, prevState) {
+    this.setDocumentTitle();
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWidthResize);
+    window.removeEventListener('resize', this.handleReziseWidth);
   }
 
-  handleWidthResize = () => {
+  handleReziseWidth = () => {
     this.setState({
       width: window.innerWidth
     });
-  };
-
-  setTitleDocument = nome => {
-    if (document.title !== nome) {
-      document.title = nome;
-    }
   };
 
   handleNomeChange = e => {
@@ -47,29 +40,21 @@ class FormWithNoHooks extends Component {
     });
   };
 
-  handleSobrenomeChange = e => {
+  handleSobreNomeChange = e => {
     this.setState({
       sobreNome: e.target.value
     });
   };
 
-  resetState = () => {
-    this.setState({
-      nome: '',
-      sobreNome: '',
-      loading: false
-    });
-  };
-
   render() {
-    const { nome, sobreNome, loading } = this.state;
+    const { nome, sobreNome, width } = this.state;
     return (
       <Card className="card">
         <CardHeader title="Form sem hooks" />
         <CardContent>
           <Input label="Nome" value={nome} onChange={this.handleNomeChange} />
-          <Input label="Sobrenome" value={sobreNome} onChange={this.handleSobrenomeChange} />
-          <WidthWindow width={this.state.width} />
+          <Input label="Sobrenome" value={sobreNome} onChange={this.handleSobreNomeChange} />
+          <WidthWindow width={width} />
         </CardContent>
       </Card>
     );

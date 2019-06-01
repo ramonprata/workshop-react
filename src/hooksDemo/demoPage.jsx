@@ -3,7 +3,7 @@ import { Grid, RadioGroup, Radio, FormControlLabel } from '@material-ui/core';
 import FormWithHooks from './formWithHooks';
 import FormWithNoHooks from './formWithNoHooks';
 
-const DemoContainer = () => {
+const DemoPage = () => {
   const [formSelecionado, setFormSelecionado] = useState('ambos');
 
   function handleFormChange(e) {
@@ -53,4 +53,4 @@ const DemoContainer = () => {
   );
 };
 
-export default DemoContainer;
+export default DemoPage;

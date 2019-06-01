@@ -1,1 +1,1 @@
-export { default as DemoContainer } from './demoContainer';
+export { default as DemoPage } from './demoPage';

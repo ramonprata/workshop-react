@@ -13,5 +13,4 @@ class WishListPage extends Component {
     );
   }
 }
-
 export default WishListPage;

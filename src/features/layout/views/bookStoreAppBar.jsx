@@ -1,17 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { setNome } from '../layout/layoutActions';
 import PropTypes from 'prop-types';
-import logo from '../logo.svg';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Grid, IconButton } from '@material-ui/core/';
-import { AccountCircle } from '@material-ui/icons/';
-
+import { AppBar, Toolbar, Typography, Grid } from '@material-ui/core/';
 import IconeCart from './iconeCart';
 import IconeFavorite from './iconeFavorite';
 import IconeAccount from './iconeAccount';
+import logo from '../../../logo.svg';
 
 const BookStoreAppBar = props => {
   // /**
@@ -60,7 +57,7 @@ const BookStoreAppBar = props => {
               <IconeCart badgeContent={props.itensCarrinho.length} goTo={goTo} />
               <IconeFavorite badgeContent={props.listaDesejos.length} goTo={goTo} />
 
-             <IconeAccount />
+              <IconeAccount />
             </Grid>
           </Grid>
         </Toolbar>

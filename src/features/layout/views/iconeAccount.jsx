@@ -2,20 +2,14 @@ import React, { Component, useState } from 'react';
 import { IconButton, Menu, MenuItem } from '@material-ui/core/';
 import { AccountCircle } from '@material-ui/icons/';
 
-const IconeAccount = (props) => {
-  // state = {
-  //   anchorEl: null
-  // };
-
+const IconeAccount = props => {
   const [anchorEl, setOpenMenu] = useState(null);
 
   const handleMenu = event => {
-    // this.setState({ anchorEl: event.currentTarget });
     setOpenMenu(event.currentTarget);
   };
 
   const handleClose = () => {
-    // this.setState({ anchorEl: null });
     setOpenMenu(null);
   };
 

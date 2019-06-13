@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
-import { layoutActions } from '../layout';
-import bookStoreReducer from '../booksStore/bookStoreReducer';
-import shoppingCartReducer from '../shoppingCart/redux/shoppingCartReducer';
+import { bookStoreReducer } from '../features/booksStore/redux/';
+import { shoppingCartReducer } from '../features/shoppingCart/redux/';
+// import { notificacaoReducers } from '../features/notificacao/redux';
 
 const reducer = combineReducers({
   bookStoreReducer,
   shoppingCart: shoppingCartReducer
+  // notificacao: notificacaoReducers
 });
 
 export default reducer;

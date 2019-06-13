@@ -9,7 +9,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import { ShoppingCart } from '@material-ui/icons/';
 import { Grid, Typography, IconButton, CardMedia } from '@material-ui/core';
 
-import * as bookStoreActions  from './bookStoreActions';
+import * as bookStoreActions from '../redux/bookStoreActions';
 
 export class BookCard extends React.Component {
   incluiNoCarrinho = () => {
@@ -36,7 +36,7 @@ export class BookCard extends React.Component {
             <Typography component="p" variant="subtitle1" id={`tituloLivro${book.id}`}>
               {book.volumeInfo.title}
             </Typography>
-            <Typography variant="subtitle2" color="textSecondary"  id={`autorLivro${book.id}`}>
+            <Typography variant="subtitle2" color="textSecondary" id={`autorLivro${book.id}`}>
               {book.volumeInfo.authors ? book.volumeInfo.authors[0] : ''}
             </Typography>
           </CardContent>
@@ -48,8 +48,11 @@ export class BookCard extends React.Component {
             >
               <FavoriteIcon />
             </IconButton>
-            <IconButton aria-label="Share" id={`btnShopping${book.id}`} 
-            onClick={this.incluiNoCarrinho}>
+            <IconButton
+              aria-label="Share"
+              id={`btnShopping${book.id}`}
+              onClick={this.incluiNoCarrinho}
+            >
               <ShoppingCart />
             </IconButton>
           </div>

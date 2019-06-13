@@ -1,13 +1,12 @@
-class ShoppingCartManager {
+class ShoppingService {
   async efetuarCompra() {
     const promise = new Promise(resolve => {
       setTimeout(() => {
-        resolve(true);
-      }, 4000);
+        resolve({ data: true });
+      }, 2000);
     });
     return promise;
   }
 }
 
-
-export default new ShoppingCartManager();
+export default new ShoppingService();

@@ -3,7 +3,7 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import toJson from 'enzyme-to-json';
 import { BookCard } from '../bookCard';
-import { booksMock } from '../../booksMock';
+import { booksMock } from '../../../booksMock';
 configure({ adapter: new Adapter() });
 
 describe('Testa <BookCard />', function() {

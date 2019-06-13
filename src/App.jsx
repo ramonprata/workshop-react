@@ -8,7 +8,7 @@ import { BookStoreAppBar } from './features/layout';
 import { WishListPage } from './features/wishList';
 import { ShoppingContainer } from './features/shoppingCart';
 import { BookStoreContainer } from './features/booksStore';
-// import { NotificacaoContainer } from './features/notificacao';
+import { NotificacaoContainer } from './features/notificacao';
 
 class App extends Component {
   constructor(props) {
@@ -31,6 +31,7 @@ class App extends Component {
               </Switch>
             </div>
           </div>
+          <NotificacaoContainer />
         </BrowserRouter>
       </Provider>
     );

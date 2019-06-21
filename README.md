@@ -147,30 +147,30 @@
 - O estado de um componente diz como este deve ser apresentado na tela
 - Quando o estado do componente não depende ou não provém de um componente pai (**props**), o proprio componente controla seu estado. Isso pode ser chamado de estado local
 
-    ```javascript
-    class App extends Component {
-      state = {
-        comment: 'Comentário inicial'
-      };
-      render() {
-        return (
-          <div>
-            <h1>Hello, world!</h1>
-            <h2>My comment: {this.state.comment}.</h2>
-          </div>
-        );
-      }
+  ```javascript
+  class App extends Component {
+    state = {
+      comment: 'Comentário inicial'
+    };
+    render() {
+      return (
+        <div>
+          <h1>Hello, world!</h1>
+          <h2>My comment: {this.state.comment}.</h2>
+        </div>
+      );
     }
-    ```
+  }
+  ```
 
 - O estado de um componente deve ser alterado via chamada de função `setState({})`
 
-    ```javascript
-    // Errado
-    this.state.comment = 'Hello';
-    // Certo
-    this.setState({ comment: 'Hello' });
-    ```
+  ```javascript
+  // Errado
+  this.state.comment = 'Hello';
+  // Certo
+  this.setState({ comment: 'Hello' });
+  ```
 
 ### Componentes - LifeCycle
 
@@ -184,40 +184,44 @@
 - Entender o **lifecycle** e como a alteração de estado do componente interage com o **lifecycle** é extremamente importante e sua aplicação influencia diretamente na performance e usabilidade da aplicação
 - Component **lifecycle** exemplo
 
-    ```javascript
-    class MeuComponente extends Component {
-      state = {
-        comment: 'Comentário inicial'
-      };
-      // o componentDidMount é um dos métodos do lifecycle de criação do componente
-      // ele executa quando o componente acaba de renderizar
-      componentDidMount() {
-        setTimeout(() => {
-          this.setState({
-            comment: 'Altera o comentário 3 segundos depois que meu componente for montado'
-          });
-        }, 3000);
-      }
-    
-      render() {
-        return (
-          <div>
-            <h1>Hello, world!</h1>
-            <h2>My comment: {this.state.comment}.</h2>
-          </div>
-        );
-      }
+  ```javascript
+  class MeuComponente extends Component {
+    state = {
+      comment: 'Comentário inicial'
+    };
+    // o componentDidMount é um dos métodos do lifecycle de criação do componente
+    // ele executa quando o componente acaba de renderizar
+    componentDidMount() {
+      setTimeout(() => {
+        this.setState({
+          comment: 'Altera o comentário 3 segundos depois que meu componente for montado'
+        });
+      }, 3000);
     }
-    ```
+
+    render() {
+      return (
+        <div>
+          <h1>Hello, world!</h1>
+          <h2>My comment: {this.state.comment}.</h2>
+        </div>
+      );
+    }
+  }
+  ```
+
 ### Componentes - LifeCycle - React < 16.3
+
 ![](images/lifecyclereact.png)
 
 ### Componentes - LifeCycle - React >= 16.3
+
 ![](images/lifecyclereact16.png)
 
 ## MODULO IV
 
 ### Navegação - React router
+
 - Route
 - Switch
 - Link
@@ -225,66 +229,69 @@
 - Navegação com parâmetros
 
 ### Navegação - Prática - Book Store
-![](images/bookStoreModulo4.png)
 
+![](images/bookStoreModulo4.png)
 
 ## MODULO V
 
 ### Controle de estado da aplicação - React Redux
+
 - controle de estado global da aplicação
 - compartilhar estados entre componentes em qualquer nível
-- store 
+- store
   - state
-    * guarda o estado da aplicação
+    - guarda o estado da aplicação
   - reducers
-    * funções que alteram o estado da aplicação
+    - funções que alteram o estado da aplicação
   - actions
-    * ações que dizem como os reducers devem alterar o estado
+    - ações que dizem como os reducers devem alterar o estado
 
 ### Controle de estado da aplicação - React Redux
+
 ![](images/redux1.png)
 
 ### Controle de estado da aplicação - React Redux
+
 ![](images/redux2.png)
 
 ## MODULO VI - Boas práticas, otimização e reuso de coponentes
+
 - Quebrar componentes e componentes menores
-  * facilita manutenabilidade 
-  * mais controle nas renderizações (otimização)
-  * aumenta potencial de reuso de componentes
+  - facilita manutenabilidade
+  - mais controle nas renderizações (otimização)
+  - aumenta potencial de reuso de componentes
 - Transformar function componentes em class componentes
-  * performance
+  - performance
 
 ## MODULO VII - Features React 16.x.x / Testes
-- React memo
-    * melhora performance
-    * faz o cache de uma renderização que já ocorreu
-    * se as props não mudam renderiza o que está em cache sem precisar
-      processar a renderização novamente
-    * [Entenda a técnica de memoization](http://cangaceirojavascript.com.br/funcoes-velozes-com-memoization-pattern/)
-    
-- React React hooks
-    * uma forma de mehorar a performance da aplicação fazendo **function components** se comportarem como **class components**
-    * principais hooks
-        * **useState:** fazer controle de estado em um **function component**
-        * **useEffect:** simular lifecycle em um **function component**
-    * outros hooks
-        * useReducer
-        * useRef
-        * useCallback
-        * useMemo
-- Testes unitários
-    * [Jest](https://jestjs.io/)
-        * default em aplicações react
-        * test runner
-        * é o jest que irá rodar seus testes, fazer os asserts(validações)
-    * [Enzyme](https://airbnb.io/enzyme/)
-        * é um *utility* para testar componentes em react
-        * provê recursos para montar e manipular os componentes
-        * ver alguns exemplos de teste no projeto em: ```src/bookStore/tests```
-        * para rodar os testes execute: ```npm run test```
-        * as configurações do jest ficam no ```package.json```
 
+- React memo
+  - melhora performance
+  - faz o cache de uma renderização que já ocorreu
+  - se as props não mudam renderiza o que está em cache sem precisar
+    processar a renderização novamente
+  - [Entenda a técnica de memoization](http://cangaceirojavascript.com.br/funcoes-velozes-com-memoization-pattern/)
+- React React hooks
+  - uma forma de mehorar a performance da aplicação fazendo **function components** se comportarem como **class components**
+  - principais hooks
+    - **useState:** fazer controle de estado em um **function component**
+    - **useEffect:** simular lifecycle em um **function component**
+  - outros hooks
+    - useReducer
+    - useRef
+    - useCallback
+    - useMemo
+- Testes unitários
+  - [Jest](https://jestjs.io/)
+    - default em aplicações react
+    - test runner
+    - é o jest que irá rodar seus testes, fazer os asserts(validações)
+  - [Enzyme](https://airbnb.io/enzyme/)
+    - é um _utility_ para testar componentes em react
+    - provê recursos para montar e manipular os componentes
+    - ver alguns exemplos de teste no projeto em: `src/bookStore/tests`
+    - para rodar os testes execute: `npm run test`
+    - as configurações do jest ficam no `package.json`
 
 # REFERENCIAS
 
@@ -311,3 +318,16 @@ https://reactjs.org/docs/react-api.html#reactmemo
 https://jestjs.io/
 
 https://airbnb.io/enzyme/
+
+# React Overview completo
+
+React é uma biblioteca JavaScript usada para criar interfaces de usuário (UI's), que é mantida pelo Facebook.
+Desde seu lançamento, em 2013, o React tem crecido de forma considerável entre desenvolvedores e consequentemente no mercado. Com apenas 6 anos o React já se tornou uma das bibliotecas JavaScript mais populares, se não a mais popular. Segundo o trends no GitHub e StackOverflow, o React já ultrapassou outros famosos frameworks/libraries JavaScript dos últimos 10 anos. Hoje, além de todas as plataformas do Facebook, o React é usado também por outras grandes companhias como Amazon, Apple, Google, Microsoft, Dropbox, Lyft, Netflix, NYTimes, Pinterest, Snapchat, Spotify, Square, Twitter, Uber, Nubank, Walmart, Yahoo, Airbnb e claro, nós da DTI digital.
+Sua popularidade está relacionada ao principal objetivo/missão do time React que é tonar a criação de UI's o mais simples possível para o desenvolvedor de forma que, como resultado, consigamos construir interfaces de usuário mais agradáveis e com uma melhor interação para o usuário final.
+Um dos fatores que simplifica a criação de UI's utilizando React é o fato de ele ser declarativo. Dessa forma nós precisamos nos preocupar mais com "O que" e menos com o "Como". Em outras palavras, você precisa simplesmente "falar" para o React: "Dado o estado X na minha aplicação, apresenta a visualização desta forma para o usuário". E é o React que irá se encarregar, de forma eficiente, do "Como" isto será feito. Além disso, o paradigma de programação declarativa torna o código mais previsível e mais fácil de "debugar".
+Outro aspecto que facilita no desenvolvimento com React é que ele é baseado em componentes. A ideia aqui é criar componentes auto-contidos menores e mais simples, e combina-los para construir UI's mais complexas. Uma analogia legal de fazer seria Legos, onde pequenas partes atômicas compõe um todo. O conceito de componentização não é algo do React, é uma abordagem de programação que dentre outras vantagens podemos citar melhor testabilidade e mais reuso no nosso código. No caso do React em si, componentes bem divididos e com "responsabilidades" bem definidas pode implicar inclusive na performance da aplicação.
+
+Mas o que seria um componente? E por que auto-contido? Bem, suponhamos que você esteja desenvolvendo uma aplicação web e você queira colocar um botão na tela para que, ao clique do usuário, este botão execute algo. Se você não estiver usando nenhum framework/library, e até mesmo usando alguns, você provavelmente irá precisar de pelo menos duas coisas: criar um arquivo HTML que contem o elemento botão que irá aparecer para o usuário e criar um script que capture o clique do usuário para que execute algo. Esse script poderá ser feito no próprio HTML ou em um arquivo separado JS. Nesse cenário você teria dois arquivos minimamente acoplados para criar o que seria a "forma" do elemento (HTML) e o comportamento do elemento (JS). Note que, ao fazer isto só estamos separando tecnologias (HTML/JS) e não interesses/responsabilidades. Imagine ainda que sua aplicação web terá várias páginas que tenha botões com nomes diferentes que execute funções diferentes ao clique, de acordo com o contexto da página. Não seria legal criar uma única "coisa" (componente) que já embarcasse tanto a forma (HTML) quanto o comportamento (JS) e que você pudesse parametrizar as partes condicionadas ao contexto, e então conseguir reusar essa única coisa em todas as páginas? Se isso fez sentido para você, então você já tem uma ideia do que seria um componente. Um componente nada mais é que um encapsulamento de um ou mais elementos e/ou outros componentes. Ele é auto-contido porque já embarca sua forma (HTML) e seu comportamento (JS) e opcionalmente até mesmo seu estilo (CSS). E pode ser reusável em contextos diferentes conforme a necessidades.
+
+Além de toda preocupação com a simplicidade e em nos ajudar fazer códigos mais testáveis e reusáveis usando os padrões e abordagens mencionadas. O React investe um grande esforço, talvez o maior, em tornar aplicações React naturalmente performáticas, novamente para que os desenvolvedores não precisem lidar diretamente com o "Como". E o que faz com que aplicações React, seguindo as boas recomendações, sejam performáticas está no "Como" o React faz as coisas no background. Ha alguns anos atrás era muito comum numa aplicação web o usuário interagir de alguma forma com uma página, clicando em um botão por exemplo, e então aguardar a página ser recarregada por completo, mesmo que depois de recarregada 98% do conteúdo da página ainda era o mesmo. Isso além de custoso,
+causava uma insatisfação na experiência do usuário com o sistema. Foi aí que tiveram uma sacada: "Por que não alterar no DOM(Dopcument Object Model) somente o que de fato mudou e somente quando for necessário, e manter o que não foi alterado?". A forma com que o React faz isso é usando o conceito de Virtual DOM. Basicamente quando criamos componentes, não estamos criando elementos HTML e sim elementos React, que são uma representação mais simples e mais "leve" de um elemento HTML. Todos os elementos React criados através de componentes compõe o Virtual DOM que por sua vez é uma representação virtual do DOM real, em JS, que é mantida em memória. Dessa forma, com o Virtual DOM o React consegue optimizar as alterações no DOM real. Sempre que o estado da aplicação ou de um subconjunto de componentes alteram, o React compara aquela "nova versão" com a versão virtual do DOM que está em memória, e então o React altera no DOM real somente o que ele identificou que de fato mudou no DOM virtual, mantendo todo o restante do DOM real intacto. Essa é uma das estratégias do React para tonar as aplicações naturalmente performáticas sem que o desenvolvedor tenha que se preocupar em "Como" o React faz isso nos "bastidores". Além disso o React provê recursos e técnicas que são inclusive recomendações simples que podem ser aplicadas e muitos cenários para que, como desenvolvedores, possamos optimizar ainda mais nossas aplicações.
